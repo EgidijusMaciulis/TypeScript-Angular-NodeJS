@@ -1,0 +1,107 @@
+body {
+    background-color: #68b4cc;
+    font-family: 'Roboto', sans-serif;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.left {
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: #fffeff;
+    display: inline-block;
+    padding: 20px;
+    float: left;
+}
+
+input, select, button {
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #2ecc71;
+}
+
+input, select {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+select {
+    -webkit-appearance: none;
+    padding: 10px 55px;
+}
+
+button {
+    width: 80px;
+    background-color: #2ecc71;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    color: #fff;
+
+}
+
+.right {
+    width: 800px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 20px;
+    float: right;
+}
+
+.type {
+    display: inline-block;
+    background-color: #fff;
+    color: #2ecc71;
+    padding: 10px 20px;
+    width: 27%;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    display: inline-block;
+}
+
+
+table {
+    width: 100%;
+    max-width: 650px;
+}
+
+td, th {
+
+    text-align: left;
+
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+img.edit {
+    width: 15px;
+    height: 15px;
+    margin: auto;
+    cursor: pointer;
+
+}
+img.delete {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    cursor: pointer;
+
+
+}

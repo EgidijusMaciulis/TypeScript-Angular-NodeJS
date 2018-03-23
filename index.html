@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=latin-ext" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Auto</title>
+    <link type="text/css" href="style.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+    <div class="left">
+        <input id="modelioInput" placeholder="Modelis">
+        <input id="datosInput" placeholder="Pagaminimo data">
+        <input id="spalvosInput" placeholder="Spalva">
+        <select id="type">
+            <option selected >Kuro tipas</option>
+            <option value="dyzelinas">Dyzelinis</option>
+            <option value="benzinas">Benzininis</option>
+        </select>
+        <button id="addCar" class="addButton">Prideti</button>
+        <button id="save" class="addButton">Išsaugoti</button>
+    </div>
+    <div class="right">
+        <div class="container">
+            <div id="visiTipai" class="type">Visi automobiliai</div>
+            <div id="addDyzelinas" class="type">Dyzeliniai automobiliai</div>
+            <div id="addBenzinas" class="type">Benzininiai automobiliai</div>
+        </div>
+        <div class="container2">
+            <table id="table">
+            </table>
+
+
+        </div>
+
+    </div>
+</div>
+
+<script src="build.js"></script>
+</body>
+</html>
