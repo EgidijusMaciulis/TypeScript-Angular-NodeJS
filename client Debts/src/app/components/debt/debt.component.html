@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+
+<div class="container mb-5 mt-5 p-2 w-50">
+  <h2>Skolos pridėjimas</h2>
+
+  <div class="form-group">
+    <label>Suma:</label>
+    <input [formControl]="valueInput" class="form-control" type="number">
+  </div>
+
+  <div class="alert alert-danger" *ngIf="valueInput.hasError('min')">Neteisinga suma (mažiausiai {{valueInput.getError('min').min}}).</div>
+
+  <div class="form-group">
+    <label>Skolintojas:</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <button (click)="addLender(context.user)" class="btn btn-primary btn-outline-secondary" type="button">Aš</button>
+      </div>
+      <input [formControl]="lenderInput" class="form-control" type="text">
+    </div>
+  </div>
+
+  <div class="list-group mb-2" *ngIf="possibleLenders.length > 0">
+    <div (click)="addLender(lender)" class="list-group-item list-group-item-action" *ngFor="let lender of possibleLenders">
+      {{lender.name}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Skolininkas:</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <button (click)="addDebtor(context.user)" class="btn btn-primary btn-outline-secondary" type="button">Aš</button>
+      </div>
+      <input [formControl]="debtorInput" class="form-control" type="text">
+    </div>
+  </div>
+
+  <div class="list-group mb-2" *ngIf="possibleDebtors.length > 0">
+    <div (click)="addDebtor(debtor)" class="list-group-item list-group-item-action" *ngFor="let debtor of possibleDebtors">
+      {{debtor.name}}
+    </div>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="debt.lender && debt.lender === debt.debtor">Skolininkas ir skolintojas negali būti tas pats asmuo.</div>
+
+  <div class="alert alert-danger" *ngIf="debt.lender && debt.debtor && (debt.lender !== context.user.id && debt.debtor !== context.user.id)">Jūs turite būti arba <b>skolininkas</b> arba <b>skolintojas</b>.</div>
+
+  <button [ngClass]="{'disabled': !canSave()}" class="btn btn-primary" (click)="addDebt()">Pridėti</button>
+
+</div>

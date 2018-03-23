@@ -1,0 +1,15 @@
+<ul class="nav justify-content-end">
+  {{context.user.name}}
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/dashboard">Valdymo panelė</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/friends">Draugai</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" routerLink="/debt">Pridėti skolą</a>
+  </li>
+  <li class="nav-item">
+    <span class="nav-link" (click)="logout()">Atsijungti</span>
+  </li>
+</ul>

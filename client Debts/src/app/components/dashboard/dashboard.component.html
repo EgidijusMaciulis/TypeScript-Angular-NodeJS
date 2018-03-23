@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<div class="container w-75 mt-5 mb-5">
+
+  <div [ngClass]="{'border-danger': debt.debtor === context.user.id, 'border-success': debt.lender === context.user.id}" class="card d-inline-block m-1" style="width: 400px;" *ngFor="let debt of debts">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span *ngIf="debt.lender !== context.user.id">{{debt.lenderName}}</span>
+        <span *ngIf="debt.debtor !== context.user.id">{{debt.debtorName}}</span>
+      </li>
+      <li class="list-group-item">{{debt.amount}}</li>
+      <li class="list-group-item">{{debt.dueDate}}</li>
+      <li class="list-group-item">
+        <ng-container [ngSwitch]="debt.status">
+          <span *ngSwitchCase="DebtStatus.Pending">Patvirtintas</span>
+          <span *ngSwitchCase="DebtStatus.Unconfirmed">Laukiama patvirtinimo</span>
+          <span *ngSwitchCase="DebtStatus.Cancled">Atšaukta</span>
+          <span *ngSwitchCase="DebtStatus.Done">Grąžinta</span>
+        </ng-container>
+      </li>
+      <li class="list-group-item">
+        <button *ngIf="debt.creator === context.user.id" class="btn btn-danger" (click)="deleteDebt(debt.id)">Ištrinti</button>
+        <!--<button *ngIf="debt.creator === context.user.id" class="btn btn-info" routerLink="/debt/{{debt.id}}">Redaguoti</button>-->
+        <button class="btn btn-primary" (click)="confirmDebt(debt.id)" *ngIf="debt.status === DebtStatus.Unconfirmed && debt.creator !== context.user.id">Patvirtinti</button>
+        <button class="btn btn-success" *ngIf="debt.status === DebtStatus.Pending && debt.debtor === context.user.id" (click)="returnDebt(debt.id)">Grąžinti</button>
+      </li>
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="container w-50 p-4 bg-light mt-4 mb-4">
+  <input [(ngModel)]="titleInputValue" class="form-control mb-2" type="text" placeholder="Antraštė">
+  <textarea [(ngModel)]="contentInputValue" class="form-control mb-2" placeholder="Turinys"></textarea>
+  <select [(ngModel)]="typeValue" class="form-control mb-2">
+    <option selected disabled>Tipas</option>
+    <option [value]="NoteTypes.Urgent">Skubus</option>
+    <option value="{{NoteTypes.Regular}}">Paprastas</option>
+  </select>
+  <button (click)="addNote()" class="btn btn-primary btn-lg btn-block mb-2">Pridėti</button>
+
+  <button (click)="filter = NoteTypes.Urgent" class="btn btn-info">Skubūs</button>
+  <button (click)="filter = NoteTypes.Regular" class="btn btn-info">Paprasti</button>
+  <button (click)="filter = null" class="btn btn-info">Visi</button>
+</div>
+
+<div class="container w-75 text-center">
+
+  <ng-container *ngFor="let note of notes; let i = index;">
+    <div *ngIf="filter === null || filter === note.type" [ngClass]="{'bg-warning': note.type === NoteTypes.Regular, 'bg-primary text-white': note.type === NoteTypes.Urgent}"
+         class="card d-inline-block m-1" style="width: 18rem">
+      <h5 class="card-header">
+      <span *ngIf="editableIndex !== i">
+        {{i+1}}. {{note.title}}
+      </span>
+        <span *ngIf="editableIndex === i">
+        <input class="form-control" [(ngModel)]="note.title">
+      </span>
+      </h5>
+      <div class="card-body">
+        <p class="card-text">
+          <span *ngIf="editableIndex !== i">{{note.content}}</span>
+          <span *ngIf="editableIndex === i"><textarea class="form-control" [(ngModel)]="note.content"></textarea></span>
+        </p>
+        <button (click)="deleteNote(i)" class="btn btn-danger">Ištrinti</button>
+        <button (click)="toggleEdit(i)" class="btn btn-light">{{i === editableIndex ? 'Išsaugoti' : 'Redaguoti'}}
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+</div>

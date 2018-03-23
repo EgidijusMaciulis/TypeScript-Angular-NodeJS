@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+
+<div class="container mb-5 mt-5 p-2 w-50">
+  <h2>Draugo pridėjimas</h2>
+
+  <div class="form-group">
+    <label>Vardas:</label>
+    <div class="input-group">
+      <input [formControl]="friendInput" class="form-control" type="text">
+    </div>
+  </div>
+
+  <div class="list-group mb-2" *ngIf="possibleFriends.length > 0">
+    <div (click)="addFriend(friend.id)" class="list-group-item list-group-item-action" *ngFor="let friend of possibleFriends">
+      {{friend.name}}
+    </div>
+  </div>
+</div>
+
+
+<table class="table w-50 m-auto">
+  <thead>
+    <tr>
+      <th>Vardas</th>
+      <th>Statusas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let friend of friends">
+      <td>{{friend.name}}</td>
+      <td>
+        <ng-container [ngSwitch]="friend.status">
+          <span *ngSwitchCase="'pending'">Laukia patvirtinimo</span>
+          <span *ngSwitchCase="'confirmed'">Patvirtintas</span>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>

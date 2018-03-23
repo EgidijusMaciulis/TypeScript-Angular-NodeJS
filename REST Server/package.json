@@ -1,0 +1,21 @@
+{
+  "name": "rest",
+  "version": "1.0.0",
+  "description": "My REST service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.11.1",
+    "@types/mysql": "^2.15.2",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "express-validator": "^5.0.3",
+    "jsonwebtoken": "^8.1.1",
+    "mysql": "github:mysqljs/mysql"
+  }
+}
